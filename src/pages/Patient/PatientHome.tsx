@@ -124,7 +124,6 @@ export default function PatientHome() {
                   tagEntityId={patientData.id}
                   patient={patientData}
                   facilityId={facilityId}
-                  editUrl={`/facility/${facilityId}/patient/${patientData.id}/update`}
                   onTagsUpdate={() => {
                     queryClient.invalidateQueries({
                       queryKey: [

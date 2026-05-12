@@ -86,6 +86,17 @@ export const PatientInfoHoverCard = ({
             {t("view_profile")}
           </Link>
         </Button>
+
+        {facilityId && (
+          <Button variant="outline" className="text-gray-950" asChild>
+            <Link
+              basePath="/"
+              href={`/facility/${facilityId}/patient/${patient.id}/update`}
+            >
+              {t("edit_profile")}
+            </Link>
+          </Button>
+        )}
       </div>
       <div className="flex flex-col gap-3">
         <div className="grid grid-cols-2 gap-3 border-t border-gray-200 pt-4">
@@ -119,7 +130,6 @@ export const PatientInfoHoverCard = ({
             patient.phone_number !== patient.emergency_phone_number && (
               <div className="flex flex-col gap-1 text-sm font-medium">
                 <span className="text-gray-700">{t("emergency_contact")}</span>
-
                 <a
                   className="flex flex-row gap-2 items-center"
                   href={`tel:${patient.emergency_phone_number}`}

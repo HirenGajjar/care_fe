@@ -14,8 +14,7 @@ import {
   getTagHierarchyDisplay,
   TagConfig,
 } from "@/types/emr/tagConfig/tagConfig";
-import { Pencil, SettingsIcon } from "lucide-react";
-import { Link } from "raviger";
+import { SettingsIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 interface PatientInfoCardProps {
@@ -26,7 +25,6 @@ interface PatientInfoCardProps {
   children?: React.ReactNode;
   tagEntityType: TagEntityType;
   tagEntityId: string;
-  editUrl?: string;
 }
 
 export const PatientInfoCard = ({
@@ -37,7 +35,6 @@ export const PatientInfoCard = ({
   children,
   tagEntityType,
   tagEntityId,
-  editUrl,
 }: PatientInfoCardProps) => {
   const { t } = useTranslation();
 
@@ -45,16 +42,8 @@ export const PatientInfoCard = ({
     <>
       <Card className="bg-white shadow-sm rounded-md">
         <CardHeader className="pb-4 flex flex-col sm:flex-row sm:items-center justify-between px-2">
-          <div className="flex items-center gap-2">
+          <div className="space-y-4">
             <PatientHoverCard patient={patient} facilityId={facilityId} />
-            {editUrl && (
-              <Button asChild variant="outline" size="sm">
-                <Link href={editUrl}>
-                  <Pencil className="h-4 w-4 mr-1" />
-                  {t("edit")}
-                </Link>
-              </Button>
-            )}
           </div>
           {children}
         </CardHeader>
